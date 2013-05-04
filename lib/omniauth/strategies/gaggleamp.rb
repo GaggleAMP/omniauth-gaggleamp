@@ -31,6 +31,14 @@ module OmniAuth
       def raw_info
         @raw_info ||= access_token.get('/user').parsed
       end
+
+      # Override authorization parameters to support user provider preference.
+      def authorize_params
+        super.tap do |params|
+          provider = session['omniauth.params'].delete('provider') rescue nil
+          params[:provider] = provider if provider
+        end
+      end
     end
   end
 end
