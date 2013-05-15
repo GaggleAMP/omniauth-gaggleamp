@@ -37,6 +37,9 @@ module OmniAuth
         super.tap do |params|
           provider = session['omniauth.params'].delete('provider') rescue nil
           params[:provider] = provider if provider
+
+          service = session['omniauth.params'].delete('service') rescue nil
+          params[:service] = service if service
         end
       end
     end
