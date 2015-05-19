@@ -40,6 +40,9 @@ module OmniAuth
 
           service = session['omniauth.params'].delete('service') rescue nil
           params[:service] = service if service
+
+          context = session['omniauth.params'].delete('context') rescue nil
+          params[:context] = context if context
         end
       end
     end
