@@ -32,6 +32,13 @@ module OmniAuth
         @raw_info ||= access_token.get('/user').parsed
       end
 
+      # Override to exclude query parameters from callback URL. It is required
+      # for a perfect match during SSO validation. See
+      # intridea/omniauth-oauth2#70 for more information.
+      def callback_url
+        full_host + script_name + callback_path
+      end
+
       # Override authorization parameters to support user provider preference.
       def authorize_params
         super.tap do |params|
