@@ -14,11 +14,11 @@ describe OmniAuth::Strategies::GaggleAMP do
     end
 
     it 'has correct authorize url' do
-      subject.client.options[:authorize_url].should eq('/oauth/authorize')
+      subject.client.options[:authorize_url].should eq('oauth/authorize')
     end
 
     it 'has correct token url' do
-      subject.client.options[:token_url].should eq('/oauth/token')
+      subject.client.options[:token_url].should eq('oauth/token')
     end
   end
 
